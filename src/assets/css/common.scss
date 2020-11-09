@@ -1,0 +1,22 @@
+.ant-btn-primary{
+  background: rgb(149, 214, 111)!important;
+  border-color: #95d66f !important;
+  &:hover, &:focus{
+    color: #fff;
+    background:  #aae08b !important;
+    border-color: #aae08b !important;
+  }
+}
+html{
+  --antd-wave-shadow-color: #95d66f!important;
+}
+.ant-btn-default{
+  &:hover, &:focus{
+    color: #95d66f !important;
+    border-color: #95d66f !important;
+  }
+}
+::selection {
+  color: #fff;
+  background: #95d66f!important;
+}

@@ -5,9 +5,13 @@ export const path = {
   adminLogin: '/user/adminLogin', // 登录
   adminRegister: '/user/adminRegister', // 注册
   getUserInfo: '/user/getUserInfo', // 获取用户信息（预约记录）
+  changeUserViolate: '/user/changeUserViolate', // 修改用户违约次数
   addSeat: '/seat/addSeat',   // 添加座位
   deleteSeat: '/seat/deleteSeat', // 删除座位
   getAllSeat: '/seat/getAllSeat', // 获取座位
+  checkOrder: '/order/checkOrder', // 检查订单
+  getAllOrder: '/order/getAllOrder', // 获取订单
+  getDailyOrder: '/order/getDailyOrder', // 获取每日订单数量
 }
 
 const instance = axios.create({

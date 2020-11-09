@@ -1,0 +1,32 @@
+.home_page{
+  height: 100vh;
+  section{
+    height: 100%;
+    .ant-layout-header{
+      background-color: #74bb4a;
+      color: #fff;
+      font-size: larger;
+      font-weight: 800;
+    }
+    .ant-menu-item::after{
+      border-right: 3px solid #95d66f!important;
+    }
+    .ant-menu-item-selected{
+      background-color: #eaffe6!important;
+    }
+    .ant-menu-item-selected,.ant-menu-item-active{
+      color: #95d66f!important;
+      a{
+        color: #95d66f!important;
+        &:hover{
+          color: #95d66f!important;
+        }
+      }
+    }
+  }
+  .quit_btn{
+    position: fixed;
+    top: 16px;
+    right: 16px;
+  }
+}

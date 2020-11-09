@@ -2,43 +2,44 @@ import * as React from 'react';
 import './ScanCode.scss'
 import { ajax, path } from '../../config/config';
 import { Button, Typography } from "antd";
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { LoginOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
-const ScanCode: React.FC = () => {
-  // state
+const ScanCode: React.FC<RouteComponentProps> = (props) => {
+  /** state */
   const [codeUrl, setCodeUrl] = React.useState<string>('')
-  const [num, setNum] = React.useState(5)
 
   const getScanCode = async () => {
-    // const res = await ajax.get(path.getScanCode)
-    // const url = res as unknown as string
-    // setCodeUrl(url)
-    console.log('getScanCode');
+    ajax.get(path.checkOrder) // 检查订单
+    const res = await ajax.get(path.getScanCode)
+    const url = res as any as string
+    setCodeUrl(url)
   }
 
-  // componentDidMount
-  React.useEffect(()=>{
-    getScanCode()
-  },[])
-  React.useEffect(() => {
-    
-  })
-  // setInterval(() => { getScanCode() }, 300000);
+  // 每隔5分钟刷新二维码
+  setInterval(() => {
+    getScanCode();    // 获取二维码
+  }, 300000);
 
+  /** componentDidMount */
+  React.useEffect(()=>{getScanCode()},[])
+
+  const imgUrl = "https://www.17sucai.com/preview/1257759/2018-12-25/%E6%88%91%E7%9A%84%E4%B9%A6%E5%B1%8B/img/bgImg.jpg"
   return (
     <div className="ScanCode">
-      <div className='title'>
-        <Title level={2} type='secondary'>图书馆签到签退二维码</Title>
+      <img src={imgUrl} className="bgImg"/>
+      <div className='tip'>温馨提示：扫码签到或签退时建议点击刷新二维码</div>
+      <div className="goLogin">
+        <Button type="primary" onClick={() => props.history.replace('/login')} icon={<LoginOutlined />}>去登录</Button>
       </div>
+      <div className='title'><Title level={2} type='secondary'>图书馆签到签退二维码</Title></div>
       {/* 二维码 */}
-      <div className="img_code">
-        <div style={{width: '400px', height: '400px',backgroundColor: '#ccc'}}>123456</div>
-        {/* <img src={codeUrl} alt=""/> */}
-      </div>
-      <div>{num}</div>
+      <div className="img_code"><img src={codeUrl} /></div>
+      <div className="btn"><Button type='primary' onClick={getScanCode}>刷新二维码</Button></div>
     </div>
   )
 }
  
-export default ScanCode;
+export default withRouter(ScanCode as any);

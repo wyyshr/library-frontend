@@ -1,0 +1,22 @@
+.seat_page{
+  background-color: #fff;
+  padding: 20px;
+  .add_btn{
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  table{
+    thead tr th{
+      text-align: center;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    tbody tr td{
+      text-align: center;
+      &:nth-child(4),&:nth-child(5){
+        word-break: keep-all;
+        max-width: 300px;
+      }
+    }
+  }
+}

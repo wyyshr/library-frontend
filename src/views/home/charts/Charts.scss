@@ -1,0 +1,11 @@
+.charts_page{
+  background-color: #fff;
+  padding: 20px;
+  .top{
+    display: flex;
+    height: 300px;
+    .left,.right{
+      flex: 1;
+    }
+  }
+}
