@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './ScanCode.scss'
 import { ajax, path } from '../../config/config';
-import { Button, Typography } from "antd";
+import { Button, message, Typography } from "antd";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { LoginOutlined } from "@ant-design/icons";
 
@@ -15,6 +15,7 @@ const ScanCode: React.FC<RouteComponentProps> = (props) => {
     ajax.get(path.checkOrder) // 检查订单
     const res = await ajax.get(path.getScanCode)
     const url = res as any as string
+    message.success('二维码更新成功')
     setCodeUrl(url)
   }
 
